@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../views/HomePage.vue";
 import WebBuilder from "../views/WebBuilder.vue";
+import ViewPage from "../views/ViewPage.vue";
+import ViewEdit from "../views/ViewEdit.vue";
 
 const routes = [
   {
@@ -23,6 +25,24 @@ const routes = [
     component: WebBuilder,
     meta: {
       title: "webBuilder",
+      requiresUnauth: true,
+    },
+  },
+  {
+    path: "/page/:pageId",
+    name: "pageView",
+    component: ViewPage,
+    meta: {
+      title: "pageView",
+      requiresUnauth: true,
+    },
+  },
+  {
+    path: "/edit/:pageId",
+    name: "EditView",
+    component: ViewEdit,
+    meta: {
+      title: "EditView",
       requiresUnauth: true,
     },
   },

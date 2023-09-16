@@ -18,7 +18,6 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("https://localhost:5173").AllowAnyHeader().AllowAnyMethod();
     });
 });
-
 var connectionString = builder.Configuration.GetConnectionString("fullstackConnectionString");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -39,6 +38,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseCors(myAllowOrigins);
 app.MapControllers();
 
 app.Run();

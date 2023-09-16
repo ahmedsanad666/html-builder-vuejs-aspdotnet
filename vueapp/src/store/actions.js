@@ -1,4 +1,4 @@
-const BaseUrl = "https://localhost:5173/Arid/page";
+const BaseUrl = "https://localhost:7144/Arid/page";
 
 export default {
   async allPages(context) {
@@ -6,13 +6,11 @@ export default {
     const responseData = await response.json();
 
     if (!response.ok) {
-      console.log(response);
 
       const error = new Error(responseData.message || "failed to get category");
 
       throw error;
     }
-    console.log(response);
 
     const pages = [];
     responseData.forEach((element) => {
@@ -32,15 +30,12 @@ export default {
     });
 
     if (!response.ok) {
-      console.log(response);
-
       const error = "failed to send data";
       throw error;
     }
-    console.log(response);
   },
   async editPage(_, paylaod) {
-    const response = await fetch(BaseUrl, {
+    const response = await fetch(`${BaseUrl}/${paylaod.id}`, {
       method: "PUT",
 
       headers: {
@@ -50,21 +45,19 @@ export default {
     });
 
     if (!response.ok) {
-      console.log(response);
 
       const error = "failed to send data";
       throw error;
     }
-    console.log(response);
   },
   async deletePage(_, paylaod) {
-    const response = await fetch(`${BaseUrl}/${paylaod}`);
+    const response = await fetch(`${BaseUrl}/${paylaod}`, {
+      method: "DELETE",
+    });
 
     if (!response.ok) {
-      console.log(response);
       const error = "failed to send data";
       throw error;
     }
-    console.log(response);
   },
 };

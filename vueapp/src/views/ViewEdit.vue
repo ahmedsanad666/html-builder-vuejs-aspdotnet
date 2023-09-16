@@ -36,17 +36,46 @@ export default {
       isLoading: false,
       title: "",
       error: "",
+      html: `
+      <body id="igex"><section class="bdg-sect"><h1 class="heading">Insert title here</h1><p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p></section></body>
+      `,
+      css: "",
+      edit: null,
     };
   },
 
   computed: {},
-  methods: {},
+  methods: {
+    async getData() {
+      const id = +this.$route.params.pageId;
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("allPages");
+        const pages = this.$store.getters.getPages;
+        const page = pages.find((el) => el.id === id);
+        this.html = page.html;
+        this.css = page.css;
+        this.title = page.title;
+      } catch (e) {
+        this.error = e.message || "failed to get data";
+      }
+
+      this.isLoading = false;
+    },
+  },
   watch: {
     title(val) {
       this.title = val;
     },
+    html(val) {
+      this.html = val;
+    },
+    css(val) {
+      this.css = val;
+    },
   },
-  mounted() {
+  async mounted() {
+    await this.getData();
     const vueRouter = this.$router;
     const editor = grapesjs.init({
       container: "#gjs",
@@ -56,15 +85,8 @@ export default {
       pluginsOpts: {
         "gjs-blocks-basic": {},
       },
-      storageManager: {
-        id: "gjs-",
-        type: "local",
-        autosave: true,
-        storeComponents: true,
-        storeStyles: true,
-        storeHtml: true,
-        storeCss: true,
-      },
+      storageManager: false,
+
       deviceManager: {
         devices: [
           {
@@ -117,18 +139,20 @@ export default {
       tagName: "span",
 
       command: async () => {
+        const id = +this.$route.params.pageId;
         if (this.title === "") {
           alert("title cant be empty");
           return;
         }
         const payload = {
+          id: id,
           title: this.title,
           html: editor.getHtml(),
           css: editor.getCss(),
         };
         this.isLoading = true;
         try {
-          await this.$store.dispatch("addPage", payload);
+          await this.$store.dispatch("editPage", payload);
           vueRouter.replace("/home");
         } catch (e) {
           this.error = e.message || "failed to send data";
@@ -136,6 +160,12 @@ export default {
         this.isLoading = false;
       },
     });
+    this.edit = editor;
+
+ 
+
+    editor.setComponents(this.html);
+    editor.setStyle(this.css);
   },
 };
 </script>
