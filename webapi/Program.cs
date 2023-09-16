@@ -18,6 +18,10 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("https://localhost:5173").AllowAnyHeader().AllowAnyMethod();
     });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 var connectionString = builder.Configuration.GetConnectionString("fullstackConnectionString");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -38,7 +42,10 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+<<<<<<< HEAD
 app.UseCors(myAllowOrigins);
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 app.MapControllers();
 
 app.Run();

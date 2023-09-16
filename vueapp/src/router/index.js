@@ -2,8 +2,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../views/HomePage.vue";
 import WebBuilder from "../views/WebBuilder.vue";
+<<<<<<< HEAD
 import ViewPage from "../views/ViewPage.vue";
 import ViewEdit from "../views/ViewEdit.vue";
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 
 const routes = [
   {
@@ -28,6 +31,7 @@ const routes = [
       requiresUnauth: true,
     },
   },
+<<<<<<< HEAD
   {
     path: "/page/:pageId",
     name: "pageView",
@@ -46,6 +50,8 @@ const routes = [
       requiresUnauth: true,
     },
   },
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 ];
 
 const router = createRouter({

@@ -1,8 +1,11 @@
 <template>
   <section class="min-h-screen">
+<<<<<<< HEAD
     <div v-if="error" class="text-center md:text-3xl text-2xl text-red-700">
       {{ error }}
     </div>
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
     <div class="bg-[#463A3C] flex py-3 flex-col space-y-2 px-4">
       <label for="tilte" class="text-white font-bold tracking-wider">
         Page Title</label
@@ -12,8 +15,11 @@
         class="md:w-1/4 w-1/2 bg-[#514547] outline-none py-2 px-3 rounded-md text-white"
         id="title"
         placeholder=" page title"
+<<<<<<< HEAD
         v-model.trim="title"
         required=""
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
       />
     </div>
     <base-spinner v-if="isLoading"></base-spinner>
@@ -34,6 +40,7 @@ export default {
   data() {
     return {
       isLoading: false,
+<<<<<<< HEAD
       title: "",
       error: "",
     };
@@ -46,6 +53,16 @@ export default {
       this.title = val;
     },
   },
+=======
+      html: "",
+      css: "",
+      s: false,
+    };
+  },
+
+  methods: {},
+
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
   mounted() {
     const vueRouter = this.$router;
     const editor = grapesjs.init({
@@ -116,6 +133,7 @@ export default {
       context: "shdafkadsfjlk",
       tagName: "span",
 
+<<<<<<< HEAD
       command: async () => {
         if (this.title === "") {
           alert("title cant be empty");
@@ -134,6 +152,15 @@ export default {
           this.error = e.message || "failed to send data";
         }
         this.isLoading = false;
+=======
+      command: async function () {
+        this.html = editor.getHtml();
+        this.css = editor.getCss();
+
+        localStorage.setItem("html", this.html);
+        localStorage.setItem("css", this.css);
+        vueRouter.replace("/home");
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
       },
     });
   },

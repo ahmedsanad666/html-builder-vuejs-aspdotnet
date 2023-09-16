@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <section class="py-4">
     <h1 class="my-4 py-4 md:text-3xl text-2xl font-bold text-center">
       All pages
@@ -99,3 +100,17 @@ export default {
 </script>
 
 <style></style>
+=======
+  
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f

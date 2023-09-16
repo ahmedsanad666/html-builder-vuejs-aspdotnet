@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const BaseUrl = "https://localhost:7144/Arid/page";
+=======
+const BaseUrl = "https://localhost:5173/Arid/page";
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 
 export default {
   async allPages(context) {
@@ -6,11 +10,19 @@ export default {
     const responseData = await response.json();
 
     if (!response.ok) {
+<<<<<<< HEAD
+=======
+      console.log(response);
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 
       const error = new Error(responseData.message || "failed to get category");
 
       throw error;
     }
+<<<<<<< HEAD
+=======
+    console.log(response);
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 
     const pages = [];
     responseData.forEach((element) => {
@@ -30,12 +42,24 @@ export default {
     });
 
     if (!response.ok) {
+<<<<<<< HEAD
       const error = "failed to send data";
       throw error;
     }
   },
   async editPage(_, paylaod) {
     const response = await fetch(`${BaseUrl}/${paylaod.id}`, {
+=======
+      console.log(response);
+
+      const error = "failed to send data";
+      throw error;
+    }
+    console.log(response);
+  },
+  async editPage(_, paylaod) {
+    const response = await fetch(BaseUrl, {
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
       method: "PUT",
 
       headers: {
@@ -45,10 +69,15 @@ export default {
     });
 
     if (!response.ok) {
+<<<<<<< HEAD
+=======
+      console.log(response);
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 
       const error = "failed to send data";
       throw error;
     }
+<<<<<<< HEAD
   },
   async deletePage(_, paylaod) {
     const response = await fetch(`${BaseUrl}/${paylaod}`, {
@@ -59,5 +88,18 @@ export default {
       const error = "failed to send data";
       throw error;
     }
+=======
+    console.log(response);
+  },
+  async deletePage(_, paylaod) {
+    const response = await fetch(`${BaseUrl}/${paylaod}`);
+
+    if (!response.ok) {
+      console.log(response);
+      const error = "failed to send data";
+      throw error;
+    }
+    console.log(response);
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
   },
 };

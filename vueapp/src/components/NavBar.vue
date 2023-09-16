@@ -37,6 +37,7 @@
           <li>
             <router-link :to="{ name: 'webBuilder' }">Add Page</router-link>
           </li>
+<<<<<<< HEAD
           <li>
             <button
               id="dropdownHoverButton"
@@ -81,6 +82,8 @@
               </ul>
             </div>
           </li>
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
         </ul>
       </div>
     </div>
@@ -92,6 +95,7 @@ export default {
   data() {
     return {
       ShowNav: true,
+<<<<<<< HEAD
       pages: [],
     };
   },
@@ -111,6 +115,13 @@ export default {
         route.meta.title === "webBuilder" ||
         route.meta.title === "EditView"
       ) {
+=======
+    };
+  },
+  methods: {
+    checkcurrentroute(route) {
+      if (route.meta.title === "webBuilder") {
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
         this.ShowNav = false;
       } else {
         this.ShowNav = true;
@@ -122,9 +133,12 @@ export default {
       this.checkcurrentroute(newRoute);
     },
   },
+<<<<<<< HEAD
   created() {
     this.getData();
   },
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
 };
 </script>
 

@@ -15,8 +15,11 @@ namespace webapi.Controllers
 
         private readonly ApplicationDbContext _context;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5673bf42ced898ff4e97108a21fdb18886ea630f
         public PageController(ApplicationDbContext context)
         {
           
